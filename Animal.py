@@ -2,7 +2,7 @@
 class Pet(object):
     maxhealth = 70
 
-    def __init__(self, animaltype, animalhealth: int, animalname, sadmood, avgmood, happymood):
+    def __init__(self, animaltype, animalhealth: int, animalname, sadmood: int, avgmood: int, happymood: int):
         self.type = animaltype
         self.health = animalhealth
         self.name = animalname
@@ -11,6 +11,11 @@ class Pet(object):
         self.happymood = happymood
 
     def modify_health_based_on_mood(self, incomingmood):
+        """
+
+        :param incomingmood: char that defines which self attribute to use when modifying health attribute
+        :return: self.health attribute changed.
+        """
         if incomingmood == 's':
             self.health = int(self.health) + self.sadmood
         elif incomingmood == 'a':

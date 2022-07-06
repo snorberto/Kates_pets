@@ -1,4 +1,4 @@
-def improve_mood_based_on_list(incomingmood, listofanimals, conditioncap: int):
+def improve_mood_based_on_petlist_condition(incomingmood, listofanimals, conditioncap: int):
     """
 
     :param incomingmood: the current mood we are investigating
@@ -12,6 +12,6 @@ def improve_mood_based_on_list(incomingmood, listofanimals, conditioncap: int):
     """
     availablemoods = ['s', 'a', 'h']
     newmood = incomingmood
-    if any(int(button.health) > conditioncap for button in listofanimals) and incomingmood != 'h':
+    if any(int(animal.health) > conditioncap for animal in listofanimals) and incomingmood != 'h':
         newmood = availablemoods[availablemoods.index(incomingmood) + 1]
     return newmood
