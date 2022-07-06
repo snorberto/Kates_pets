@@ -1,4 +1,4 @@
-import Animal
+from mood_operators import improve_mood_based_on_list
 from Animal import Pet
 
 listofallpets = []
@@ -17,9 +17,9 @@ with open("TestFile.txt") as f:
     moodchain = f.readline()
 
 for mood in moodchain:
-    mood = Animal.improve_mood_based_on_list(mood, listofallpets)
+    print("before change: " + mood)
+    mood = improve_mood_based_on_list(incomingmood=str.lower(mood), listofanimals=listofallpets, conditioncap=5)
+    print("after change: " + mood)
 
-    for p in listofallpets:
-        pet = Pet(animaltype=p['Type'], animalname=p['Name'], animalhealth=p['Health'])
-
-
+    # for p in listofallpets:
+    #    pet = Pet(animaltype=p['Type'], animalname=p['Name'], animalhealth=p['Health'])
