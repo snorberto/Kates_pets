@@ -12,7 +12,6 @@ def improve_mood_based_on_list(incomingmood, listofanimals, conditioncap: int):
     """
     availablemoods = ['s', 'a', 'h']
     newmood = incomingmood
-    criteriafulfilled = [p for p in listofanimals if int(p['Health']) < conditioncap]
-    if len(criteriafulfilled) == 0 and incomingmood != 'h':
+    if any(int(button.health) > conditioncap for button in listofanimals) and incomingmood != 'h':
         newmood = availablemoods[availablemoods.index(incomingmood) + 1]
     return newmood

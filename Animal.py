@@ -1,24 +1,40 @@
+# parent class:
 class Pet(object):
-    """
-    maximumhealth: defines the animal's maximum health
-    moodmodifiers: dict of dict of all the configurations available per animal type and mood.
-    """
-    maximumhealth = 70
-    moodmodifiers = {"s": {"C": -7, "H": -5, "T": -3},
-                     "a": {"C": 3, "H": -3, "T": -2},
-                     "h": {"C": 3, "H": 2, "T": 1}
-                     }
+    maxhealth = 70
 
-    def __init__(self, animaltype, animalname, animalhealth):
-        self.animaltype = animaltype
-        self.animalname = animalname
-        self.animalhealth = animalhealth
+    def __init__(self, animaltype, animalhealth: int, animalname, sadmood, avgmood, happymood):
+        self.type = animaltype
+        self.health = animalhealth
+        self.name = animalname
+        self.sadmood = sadmood
+        self.avgmood = avgmood
+        self.happymood = happymood
 
     def modify_health_based_on_mood(self, incomingmood):
-        """
+        if incomingmood == 's':
+            self.health = int(self.health) + self.sadmood
+        elif incomingmood == 'a':
+            self.health = int(self.health) + self.avgmood
+        elif incomingmood == 'h':
+            self.health = int(self.health) + self.happymood
 
-        :param incomingmood: the mood that will affect the pet's health
-        :return: a modified health for the pet.
-        """
+        if self.health > Pet.maxhealth:
+            self.health = Pet.maxhealth
 
-        self.animalhealth = str(int(self.animalhealth) + Pet.moodmodifiers[incomingmood][self.animaltype])
+
+# child class
+class Cat(Pet):
+    def __init__(self, animaltype, animalhealth, animalname, sadmood=-7, avgmood=3, happymood=3):
+        Pet.__init__(self, animaltype, animalhealth, animalname, sadmood, avgmood, happymood)
+
+
+# child class
+class Tarantula(Pet):
+    def __init__(self, animaltype, animalhealth, animalname, sadmood=-3, avgmood=-2, happymood=1):
+        Pet.__init__(self, animaltype, animalhealth, animalname, sadmood, avgmood, happymood)
+
+
+# child class
+class Hamster(Pet):
+    def __init__(self, animaltype, animalhealth, animalname, sadmood=-5, avgmood=-3, happymood=2):
+        Pet.__init__(self, animaltype, animalhealth, animalname, sadmood, avgmood, happymood)
