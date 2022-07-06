@@ -21,5 +21,8 @@ for mood in moodchain:
     mood = improve_mood_based_on_list(incomingmood=str.lower(mood), listofanimals=listofallpets, conditioncap=5)
     print("after change: " + mood)
 
-    # for p in listofallpets:
-    #    pet = Pet(animaltype=p['Type'], animalname=p['Name'], animalhealth=p['Health'])
+    for p in listofallpets:
+        pet = Pet(animaltype=p['Type'], animalname=p['Name'], animalhealth=p['Health'])
+        print("before the change: " + str(pet.animalhealth))
+        pet.modify_health_based_on_mood(mood)
+        print("after the change: " + str(pet.animalhealth))
